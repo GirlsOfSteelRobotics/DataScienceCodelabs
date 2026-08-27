@@ -1,7 +1,7 @@
 
 Documentation and tutorials for the Girls of Steel (FRC 3504) data science team.
 
-Rendered docs are available at 
+Rendered docs are available [here](https://datasciencecodelabs.readthedocs.io/en/latest/)
 
 
 ## Building docs locally
