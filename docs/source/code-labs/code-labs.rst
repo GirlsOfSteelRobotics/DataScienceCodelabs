@@ -15,3 +15,4 @@ You will need to clone it locally to start working
    :caption: Code Labs:
 
    basic-python/basic-python-lab
+   pandas/pandas-lab
