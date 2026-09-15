@@ -9,5 +9,5 @@ def main():
 
 
 if __name__ == "__main__":
-    # python3 CL3_gitflow.py
+    # python3 source/CL3_gitflow.py
     main()
