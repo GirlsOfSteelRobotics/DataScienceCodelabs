@@ -16,3 +16,4 @@ You will need to clone it locally to start working
 
    basic-python/basic-python-lab
    pandas/pandas-lab
+   gitflow/gitflow-lab
