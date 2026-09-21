@@ -16,6 +16,10 @@ def main():
     jinjin_says_bye()
     sophie_says_goodbye()
     pj_says_hello_again()
+    a_branch()
+def a_branch():
+    print("Celestial loves coding soo much")
+
 
 def jinjin_says_bye():
     print("bye")
