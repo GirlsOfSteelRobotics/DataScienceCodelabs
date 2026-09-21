@@ -17,7 +17,6 @@ source .venv/bin/activate
 pip install -r requirements.txt 
 ```
 
-
 ### Actually building
 ```
 sphinx-build -M html source build

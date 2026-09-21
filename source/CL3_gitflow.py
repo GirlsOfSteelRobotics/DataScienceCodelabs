@@ -6,6 +6,10 @@ def pj_says_hello_2026():
 
 def main():
     pj_says_hello_2026()
+    a_branch()
+def a_branch():
+    print("Celestial loves coding soo much")
+
 
 
 if __name__ == "__main__":
