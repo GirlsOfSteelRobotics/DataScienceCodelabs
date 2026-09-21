@@ -7,9 +7,14 @@ def sophie_says_goodbye():
     print("Sophie Says Goodbye PJ")
 
 
+def pj_says_hello_again():
+    print("PJ says hello again")
+
+
 def main():
     pj_says_hello_2026()
     sophie_says_goodbye()
+    pj_says_hello_again()
 
 
 if __name__ == "__main__":
