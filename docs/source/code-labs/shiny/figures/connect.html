@@ -1,0 +1,53 @@
+<style>
+.shiny-connect { display: flex; flex-direction: column; gap: 16px; margin-bottom: 12px; }
+.shiny-connect .panel { min-width: 0; }
+.shiny-connect .panel-title { font-weight: bold; margin-bottom: 4px; }
+.shiny-connect pre {
+    margin: 0; padding: 12px; overflow-x: auto;
+    background: #f8f8f8; border: 1px solid #e1e4e5;
+    font-family: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+    font-size: 12px; line-height: 1.5; color: #333;
+}
+.shiny-connect .kw { color: #007020; font-weight: bold; }
+.shiny-connect .str { color: #4070a0; }
+.shiny-connect .dec { color: #555; }
+.shiny-hl { padding: 1px 3px; border-radius: 3px; font-weight: bold; }
+.shiny-hl.day { background: #bbdefb; color: #0d47a1; outline: 2px solid #1976d2; }
+.shiny-hl.size { background: #c8e6c9; color: #1b5e20; outline: 2px solid #388e3c; }
+.shiny-hl.plot { background: #ffe0b2; color: #bf360c; outline: 2px solid #ef6c00; }
+.shiny-legend { list-style: none; margin: 0 0 24px 0 !important; padding: 0; }
+.shiny-legend li { margin: 8px 0 !important; list-style: none !important; }
+.shiny-legend code { font-size: 12px; }
+</style>
+
+<div class="shiny-connect">
+<div class="panel">
+<div class="panel-title">View (<code>app_ui</code>)</div>
+<pre>app_ui = ui.page_sidebar(
+    ui.sidebar(
+        ui.input_select(<span class="shiny-hl day">"day"</span>, <span class="str">"Day:"</span>, ...),
+        ui.input_slider(<span class="shiny-hl size">"party_size"</span>, <span class="str">"Max party size:"</span>, ...),
+    ),
+    ui.card(output_widget(<span class="shiny-hl plot">"tip_plot"</span>)),
+    title=<span class="str">"Restaurant Tips"</span>,
+)</pre>
+</div>
+<div class="panel">
+<div class="panel-title">Presenter (<code>server</code>)</div>
+<pre><span class="kw">def</span> server(input, output, session):
+    <span class="kw">def</span> get_filtered_meals():
+        day_df = df[df[<span class="str">"day"</span>] == input.<span class="shiny-hl day">day</span>()]
+        <span class="kw">return</span> day_df[day_df[<span class="str">"size"</span>] &lt;= input.<span class="shiny-hl size">party_size</span>()]
+
+    <span class="dec">@render_widget</span>
+    <span class="kw">def</span> <span class="shiny-hl plot">tip_plot</span>():
+        fig = px.scatter(get_filtered_meals(), ...)
+        <span class="kw">return</span> fig</pre>
+</div>
+</div>
+
+<ul class="shiny-legend">
+<li><span class="shiny-hl day">"day"</span> &rarr; <code>input.<span class="shiny-hl day">day</span>()</code> : the combo box's id becomes a function on <code>input</code> that returns whatever is selected</li>
+<li><span class="shiny-hl size">"party_size"</span> &rarr; <code>input.<span class="shiny-hl size">party_size</span>()</code> : same for the slider</li>
+<li><span class="shiny-hl plot">"tip_plot"</span> &rarr; <code>def <span class="shiny-hl plot">tip_plot</span>()</code> : the empty spot in the UI is filled in by the server function <em>with the same name</em></li>
+</ul>
